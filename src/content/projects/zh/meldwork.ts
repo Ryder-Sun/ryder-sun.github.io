@@ -8,7 +8,7 @@ export default {
   title: "Meldwork",
   theme: "dark",
   tags: ["agent", "product", "javascript", "vue", "node"],
-  source: "https://github.com/Ryder-MHumble/Meldwork",
+  source: "https://github.com/Ryder-Sun/Meldwork",
   description:
     "Meldwork 是一个本地优先的桌面 Agent 工作台，让任务在切换不同 AI Agent 时仍保持连续。每个会话都保留上下文、附件、权限、兼容的原生 Session 和脱敏执行记录，使单 Agent 工作可以自然进入边界明确的多 Agent 复核，而不是不断复制 Prompt。<br/><br/>GitHub API 于 2026-08-12 核验：54 Stars、JavaScript。项目重点是持久任务上下文、受控协作、可检查执行过程和本地数据所有权。",
   components: [

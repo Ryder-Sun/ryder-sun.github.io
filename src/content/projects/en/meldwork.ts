@@ -8,7 +8,7 @@ export default {
   title: "Meldwork",
   theme: "dark",
   tags: ["agent", "product", "javascript", "vue", "node"],
-  source: "https://github.com/Ryder-MHumble/Meldwork",
+  source: "https://github.com/Ryder-Sun/Meldwork",
   description:
     "Meldwork is a local-first desktop workspace that keeps a task continuous while AI agents change. Each conversation retains its context, attachments, permissions, compatible native session, and sanitized execution history, so direct work can move into bounded multi-Agent review without becoming a chain of copied prompts.<br/><br/>GitHub API check on 2026-08-12: 54 stars, JavaScript. The product focus is durable task context, controlled collaboration, inspectable execution, and local ownership of workspace state.",
   components: [

@@ -14,7 +14,7 @@ export default {
     "product"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Guameow",
+  "source": "https://github.com/Ryder-Sun/Guameow",
   "description": "Guameow 是一个面向 Z 世代的 AI 玄学移动应用，把每日喵签、命理分析、运势预测、开运指南和猫咪陪伴感包装成轻娱乐产品。它探索的是 AI 在情绪价值、仪式感和消费级互动中的表达方式。<br/><br/>GitHub API 于 2026-08-12 核验：8 Stars、Dart。项目重点在于移动端视觉、人格化交互和 AI 生成解释如何形成可重复的每日使用场景。",
   "components": [
     {

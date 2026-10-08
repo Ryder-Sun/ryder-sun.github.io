@@ -38,5 +38,5 @@ npm run build
 
 - Owner: Ryder Sun
 - Email: `mhumble010221@gmail.com`
-- GitHub: `https://github.com/Ryder-MHumble`
+- GitHub: `https://github.com/Ryder-Sun`
 - Bilibili: `https://space.bilibili.com/296920670`

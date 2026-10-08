@@ -9,7 +9,7 @@ export default {
   title: "LPS-YOLO 科研项目",
   theme: "light",
   tags: ["research", "pytorch", "python", "ai"],
-  source: "https://github.com/Ryder-MHumble/LPS-YOLO",
+  source: "https://github.com/Ryder-Sun/LPS-YOLO",
   description:
     "这是我从算法研究走向 AI 产品判断的重要项目：围绕无人机遥感图像中的小目标、密集目标和尺度变化问题，提出更轻量的特征增强与检测结构，在保证效果提升的同时关注部署成本。<br/><br/>项目发表于 Scientific Reports，并在 VisDrone、DOTAv2 等评估中体现出精度、参数量和小目标检测能力的综合改进。本页用脱敏视觉表达结构，不声称展示论文原图。",
   components: [

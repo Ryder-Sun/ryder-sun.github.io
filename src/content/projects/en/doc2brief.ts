@@ -10,7 +10,7 @@ export default {
   theme: "light",
   tags: ["react", "javascript", "node", "agent", "product"],
   videoBorder: false,
-  source: "https://github.com/Ryder-MHumble/Doc2Brief",
+  source: "https://github.com/Ryder-Sun/Doc2Brief",
   description:
     "Doc2Brief turns files or raw text into accessible, editable, reusable weekly-report links. Instead of asking an LLM to directly improvise HTML, it separates extraction, structuring, template matching, rendering, publishing, and same-link updates into a stable generation pipeline.<br/><br/>GitHub API check on 2026-05-27: 0 stars, JavaScript. The project focus is React/Vite frontend delivery, Node services, Agent CLI usage, built-in template systems, document parsing, and reusable report publishing workflows.",
   components: [

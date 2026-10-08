@@ -2,7 +2,7 @@
 
 Updated: 2026-08-12
 
-The Projects section contains the six highest-star public, non-fork repositories under `Ryder-MHumble`, ordered by GitHub stars at the time of the update. Every project uses three Qwen-generated 16:9 assets: a cover, a chapter visual, and a system or product diagram.
+The Projects section contains the six highest-star public, non-fork repositories under `Ryder-Sun`, ordered by GitHub stars at the time of the update. Every project uses three Qwen-generated 16:9 assets: a cover, a chapter visual, and a system or product diagram.
 
 ## Generation settings
 

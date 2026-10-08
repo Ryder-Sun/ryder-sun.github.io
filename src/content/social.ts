@@ -1,6 +1,6 @@
 export const social = [
   { url: "mailto:mhumble010221@gmail.com", name: "mail" },
-  { url: "https://github.com/Ryder-MHumble", name: "github" },
+  { url: "https://github.com/Ryder-Sun", name: "github" },
   { url: "https://www.linkedin.com/in/ryder-sun/?locale=en", name: "linkedin" },
   { url: "https://x.com/RyderSun0221", name: "x" },
   { url: "https://www.youtube.com/@RyderSunhaha", name: "youtube" },

@@ -8,7 +8,7 @@ export default {
   title: "TDA-YOLO",
   theme: "light",
   tags: ["research", "pytorch", "python", "ai"],
-  source: "https://github.com/Ryder-MHumble/TDA-YOLO",
+  source: "https://github.com/Ryder-Sun/TDA-YOLO",
   description:
     "TDA-YOLO 是面向无人机遥感影像的自适应目标检测框架，针对小目标、密集目标和尺度变化问题，引入轻量自适应加权下采样、动态上采样和可变形动态检测头。<br/><br/>GitHub API 于 2026-08-12 核验：7 Stars。仓库公开 VisDrone 与 DOTAv2 的实验数据，把模型结构选择与精度、计算量和部署可行性联系起来。",
   components: [

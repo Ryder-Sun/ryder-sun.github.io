@@ -30,7 +30,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE: /3D-Personal-Website/
+          VITE_BASE: /
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

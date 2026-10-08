@@ -9,7 +9,7 @@ export default {
   title: "LPS-YOLO Research",
   theme: "light",
   tags: ["research", "pytorch", "python", "ai"],
-  source: "https://github.com/Ryder-MHumble/LPS-YOLO",
+  source: "https://github.com/Ryder-Sun/LPS-YOLO",
   description:
     "A research project that shaped how I connect algorithms with product judgment. It addresses small, dense, and scale-varying objects in UAV remote-sensing imagery with lightweight feature enhancement and detection modules, improving accuracy while keeping deployment cost in view.<br/><br/>The work was published in Scientific Reports and evaluated on datasets such as VisDrone and DOTAv2. This page preserves the research metrics and uses privacy-safe structural visuals rather than claiming to show original paper figures.",
   components: [

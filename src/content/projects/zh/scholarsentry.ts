@@ -14,7 +14,7 @@ export default {
     "ai"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Scholars-System",
+  "source": "https://github.com/Ryder-Sun/Scholars-System",
   "description": "Scholars System 是面向学者画像、论文成果、机构关系和研究动态的学术情报界面，用来把论文仓与学者知识图谱转化为可检索、可监测、可提醒的产品体验。<br/><br/>GitHub API 于 2026-08-12 核验：9 Stars、TypeScript。项目重点是把分散的学术记录转化为可复用的研究监测工作流。",
   "components": [
     {

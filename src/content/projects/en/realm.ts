@@ -14,7 +14,7 @@ export default {
     "websockets"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Realm",
+  "source": "https://github.com/Ryder-Sun/Realm",
   "description": "Realm turns Coding Agent activity from terminal logs into a real-time observable product interface. Claude Code and multi-agent actions such as file reads, code edits, shell commands, search, errors, and commits become 3D character behaviors, while Hex Zones separate concurrent sessions.<br/><br/>GitHub API check on 2026-08-12: 26 stars, TypeScript. The product focus is agent observability, REST task dispatch, webhook callbacks, and spatial product storytelling.",
   "components": [
     {

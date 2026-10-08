@@ -16,7 +16,7 @@ export default {
     "pytorch"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/EvoLabeler-AIAgent-MLOps",
+  "source": "https://github.com/Ryder-Sun/EvoLabeler-AIAgent-MLOps",
   "description": "EvoLabeler is an AI Agent-driven MLOps system for remote-sensing object detection. It connects data upload, intelligent annotation, active learning, semi-supervised learning, curriculum learning, model training, evaluation, and iteration feedback into one loop rather than a standalone labeling tool.<br/><br/>GitHub API check on 2026-08-12: 15 stars, Python. The product focus is making every sample-selection decision, annotation action, training result, and quality signal usable for the next model-improvement cycle.",
   "components": [
     {

@@ -14,7 +14,7 @@ export default {
     "websockets"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Realm",
+  "source": "https://github.com/Ryder-Sun/Realm",
   "description": "Realm 是我把 Coding Agent 从“终端日志”转化为“实时可观察产品界面”的开源实验。它把 Claude Code 与多 Agent 协作中的读文件、写代码、运行命令、搜索、报错和提交映射为 3D 角色动作，并用 Hex Zone 区分不同任务会话。<br/><br/>GitHub API 于 2026-08-12 核验：26 Stars、TypeScript。这个项目的重点是 Agent 可观测性、外部 REST API 派发、Webhook 回传与空间化产品叙事。",
   "components": [
     {

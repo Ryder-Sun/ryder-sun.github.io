@@ -14,7 +14,7 @@ export default {
     "product"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Guameow",
+  "source": "https://github.com/Ryder-Sun/Guameow",
   "description": "Guameow is a Gen-Z AI fortune mobile app that packages daily cat fortunes, destiny analysis, luck prediction, guidance, and companion-like cat interaction into a lightweight entertainment product. It explores how AI can deliver emotional value, ritual, and consumer-facing play.<br/><br/>GitHub API check on 2026-08-12: 8 stars, Dart. The project focus is mobile visual design, character-led interaction, and how AI-generated explanations can become a repeatable daily use case.",
   "components": [
     {
