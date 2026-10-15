@@ -36,8 +36,15 @@ export const useMusic = () => {
     if (!isFeatureEnabled("sounds") || isTouch.value) return;
     const track = musicTracks[trackId];
     if (!track || track.playing()) return;
-    track.load();
-    track.play();
+
+    // Force load and play on first unlock
+    if (!track.playing()) {
+      track.load();
+      // Add a small delay to ensure load completes
+      setTimeout(() => {
+        track.play();
+      }, 100);
+    }
   };
 
   watchEffect(() => {
