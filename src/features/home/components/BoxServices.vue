@@ -7,6 +7,11 @@ import AppearingText from "../../../components/AppearingText.vue";
 import { BREAKPOINTS } from "../../../utils/sizes";
 import { Vector3 } from "three";
 import ProjectedElement from "../../../components/ProjectedElement.vue";
+import zgciLogo from "../../../assets/logos/zgci.png";
+import meituanLogo from "../../../assets/logos/meituan-white.svg";
+import baiduLogo from "../../../assets/logos/baidu-white.svg";
+import zhipuLogo from "../../../assets/logos/zhipu-lobe.svg";
+import jiduLogo from "../../../assets/logos/jidu.png";
 
 const point = new Vector3(0.75, 2.75, 6.75);
 
@@ -121,97 +126,56 @@ const setExperienceRef = (el: unknown) => {
   }
 };
 
+type ExperienceLogoKey = "zgci" | "meituan" | "baidu" | "zhipu" | "jidu";
+
+type Experience = {
+  period: string;
+  company: string;
+  role: string;
+  logo: ExperienceLogoKey;
+};
+
+/** Official brand marks imported as modules so Vite resolves the deployed base path. */
+const LOGO_SOURCES: Record<ExperienceLogoKey, string> = {
+  zgci: zgciLogo,
+  meituan: meituanLogo,
+  baidu: baiduLogo,
+  zhipu: zhipuLogo,
+  jidu: jiduLogo,
+};
+
+const LOGO_ALT: Record<ExperienceLogoKey, string> = {
+  zgci: "ZGCI logo",
+  meituan: "Meituan logo",
+  baidu: "Baidu logo",
+  zhipu: "Zhipu AI logo",
+  jidu: "JIDU logo",
+};
+
+/** Horizontal wordmarks need a wider badge than square icons to stay legible. */
+const WIDE_LOGO_KEYS: ReadonlySet<string> = new Set(["zgci", "jidu"]);
+
 const EXPERIENCE_EN = [
-  {
-    period: "2025.8 - Now",
-    company: "ZGC AI Institute",
-    role: "AI PM Intern",
-    signal: "DeanAgent stack · 9 dimensions / 134 sources",
-    detail: "Defined source scoring, crawler acceptance checks, API contracts, daily push workflows, scholar graph views, and NanoBot access so 109 active sources became reusable decision assets.",
-  },
-  {
-    period: "2025.6 - 2025.8",
-    company: "Meituan Infrastructure",
-    role: "Product Manager Intern",
-    signal: "8 MCP Servers · 35 internal tools",
-    detail: "Wrapped local MCP Servers into auditable intranet APIs, normalized request and error contracts, then designed Agent-based vitality tests for whether tools truly solve tasks.",
-  },
-  {
-    period: "2024.4 - 2025.6",
-    company: "Zhipu AI",
-    role: "Product Manager Intern",
-    signal: "Recruiting flow 3h -> under 20min",
-    detail: "Designed recruiting Agents across Boss, Feishu, OA, and Qingyan with checkpoints, exception recovery, HR review surfaces, plus ChatBI query datasets with 100% scenario selection accuracy.",
-  },
-  {
-    period: "2024.11 - 2025.4",
-    company: "Meituan AI Product",
-    role: "LLM Platform PM Intern",
-    signal: "AIPC assistant · 20K+ internal usage",
-    detail: "Shipped MCP client interaction, server configuration flows, and DeepSearch research loops that connected local device actions, tool calls, citations, and LLM execution.",
-  },
-  {
-    period: "2024.5 - 2024.11",
-    company: "JIDU / Zhongke Huizhou",
-    role: "AI Product & Algorithm PM",
-    signal: "Data platform, CV labeling, YOLO research",
-    detail: "Owned PRDs, prototypes, tests, customer feedback, active-learning labeling, data-platform migration, and lightweight YOLO research with measurable annotation and training outcomes.",
-  },
-] as const satisfies { period: string; company: string; role: string; signal: string; detail: string }[];
+  { period: "2025.8 - Now", company: "ZGCI Intelligent Innovation Center", role: "Product Manager (Full-time)", logo: "zgci" },
+  { period: "2025.6 - 2025.8", company: "Meituan Infrastructure", role: "Product Manager Intern", logo: "meituan" },
+  { period: "2025.4 - 2025.4", company: "Baidu · Wenxin Yige", role: "AIGC Product Manager Intern", logo: "baidu" },
+  { period: "2024.4 - 2025.6", company: "Zhipu AI", role: "Product Manager Intern", logo: "zhipu" },
+  { period: "2024.11 - 2025.4", company: "Meituan AI Product", role: "LLM Platform PM Intern", logo: "meituan" },
+  { period: "2024.5 - 2024.11", company: "JIDU / Zhongke Huizhou", role: "AI Product & Algorithm PM", logo: "jidu" },
+] as const satisfies readonly Experience[];
 
 const EXPERIENCE_ZH = [
-  {
-    period: "2025.8 - 至今",
-    company: "中关村人工智能研究院",
-    role: "AI 产品经理实习生",
-    signal: "DeanAgent 项目簇 · 9维度 / 134信源",
-    detail: "定义信源评分、爬虫验收、API 契约、日报推送、人才图谱与 NanoBot 入口，让 109 个启用信源沉淀为可复用的决策资产。",
-  },
-  {
-    period: "2025.6 - 2025.8",
-    company: "美团基础技术部",
-    role: "产品经理实习生",
-    signal: "8个 MCP Server · 35个内部 Tool",
-    detail: "把 Local MCP Server 封装成可审计的内网 API，统一请求、错误与权限边界，并设计 Agent 化活性测试判断工具是否真正完成任务。",
-  },
-  {
-    period: "2024.4 - 2025.6",
-    company: "北京智谱科技",
-    role: "产品经理实习生",
-    signal: "招聘流程 3h -> 20min 内",
-    detail: "设计 Boss、飞书、OA、智谱清言间的招聘 Agent 链路，补齐节点校验、异常回退、HR 复核，并构造 ChatBI 查询数据集。",
-  },
-  {
-    period: "2024.11 - 2025.4",
-    company: "美团智能产品部",
-    role: "LLM 平台产品经理实习生",
-    signal: "AIPC 助手 · 2W+ 内部使用量",
-    detail: "落地 MCP 客户端交互、Server 配置流与 DeepSearch 研究链路，把本地设备操作、工具调用、引用生成和 LLM 执行连接起来。",
-  },
-  {
-    period: "2024.5 - 2024.11",
-    company: "集度汽车 / 中科汇洲",
-    role: "AI 产品与算法产品实习",
-    signal: "数据平台、CV 标注、YOLO 科研",
-    detail: "覆盖 PRD、原型、测试、客户反馈、主动学习标注、数据平台迁移与轻量化 YOLO 研究，用指标闭环推动标注和训练效率提升。",
-  },
-] as const satisfies { period: string; company: string; role: string; signal: string; detail: string }[];
+  { period: "2025.8 - 至今", company: "ZGCI 智能创新中心", role: "产品经理（正职）", logo: "zgci" },
+  { period: "2025.6 - 2025.8", company: "美团基础技术部", role: "产品经理实习生", logo: "meituan" },
+  { period: "2025.4 - 2025.4", company: "百度 · 文心一格", role: "AIGC 产品经理实习生", logo: "baidu" },
+  { period: "2024.4 - 2025.6", company: "北京智谱科技", role: "产品经理实习生", logo: "zhipu" },
+  { period: "2024.11 - 2025.4", company: "美团智能产品部", role: "LLM 平台产品经理实习生", logo: "meituan" },
+  { period: "2024.5 - 2024.11", company: "集度汽车 / 中科汇洲", role: "AI 产品与算法产品实习", logo: "jidu" },
+] as const satisfies readonly Experience[];
 
 const experiences = computed(() => {
   return locale.value === "zh" ? EXPERIENCE_ZH : EXPERIENCE_EN;
 });
-
-const expandedIndexes = ref<Set<number>>(new Set());
-
-const toggleExperience = (index: number) => {
-  const next = new Set(expandedIndexes.value);
-  if (next.has(index)) {
-    next.delete(index);
-  } else {
-    next.add(index);
-  }
-  expandedIndexes.value = next;
-};
 </script>
 
 <template>
@@ -235,29 +199,19 @@ const toggleExperience = (index: number) => {
         <div class="box-services-timeline">
           <div
             class="box-services-experience"
-            :class="{ 'is-expanded': expandedIndexes.has(index) }"
-            v-for="(experience, index) in experiences"
-            :key="experience.company"
+            :class="{ 'has-wide-logo': WIDE_LOGO_KEYS.has(experience.logo) }"
+            v-for="experience in experiences"
+            :key="`${experience.period}-${experience.company}`"
             :ref="setExperienceRef"
-            role="button"
-            tabindex="0"
-            :aria-expanded="expandedIndexes.has(index)"
-            @click="toggleExperience(index)"
-            @keydown.enter.prevent="toggleExperience(index)"
-            @keydown.space.prevent="toggleExperience(index)"
           >
             <span class="box-services-dot" aria-hidden="true"></span>
             <div class="box-services-experience-main">
+              <span class="box-services-logo">
+                <img :src="LOGO_SOURCES[experience.logo]" :alt="LOGO_ALT[experience.logo]" />
+              </span>
               <p class="box-services-company">{{ experience.company }}</p>
               <p class="box-services-period">{{ experience.period }}</p>
-            </div>
-            <p class="box-services-role">{{ experience.role }}</p>
-            <p class="box-services-signal">
-              <span class="box-services-signal-text">{{ experience.signal }}</span>
-              <span class="box-services-chevron" aria-hidden="true"></span>
-            </p>
-            <div class="box-services-detail-wrap">
-              <p class="box-services-detail">{{ experience.detail }}</p>
+              <p class="box-services-role">{{ experience.role }}</p>
             </div>
           </div>
         </div>
@@ -285,8 +239,8 @@ const toggleExperience = (index: number) => {
   left: var(--space-outer);
 
   @include mixins.landscape {
-    width: 520px;
-    max-width: calc(var(--svw) * 40);
+    width: 620px;
+    max-width: calc(var(--svw) * 46);
     padding-left: var(--line-length);
     position: relative;
     left: 0;
@@ -296,8 +250,8 @@ const toggleExperience = (index: number) => {
   }
 
   @include mixins.landscape-large {
-    width: 460px;
-    max-width: calc(var(--svw) * 39);
+    width: 560px;
+    max-width: calc(var(--svw) * 44);
   }
 
   &::after,
@@ -417,151 +371,49 @@ const toggleExperience = (index: number) => {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 
     &::before {
       content: "";
       position: absolute;
-      top: 12px;
-      bottom: 12px;
+      top: 14px;
+      bottom: 14px;
       left: calc(var(--card-pad-left) + var(--dot-size) / 2);
       width: 1px;
       background: rgba(255, 255, 255, 0.08);
     }
   }
 
+  // 每条经历：时间轴圆点 + logo 徽章 + 公司/时间 + 职位
   &-experience {
+    --badge-width: 64px;
+
     position: relative;
     display: grid;
     grid-template-columns: var(--dot-size) minmax(0, 1fr);
     column-gap: var(--rail-gap);
-    row-gap: 3px;
-    padding: 10px 12px 11px var(--card-pad-left);
-    border: var(--stroke-sm) solid transparent;
+    row-gap: 5px;
+    padding: 12px 12px 13px var(--card-pad-left);
     border-radius: 12px;
-    cursor: pointer;
     opacity: 0;
-    transition:
-      border-color 0.22s ease,
-      background-color 0.22s ease,
-      transform 0.2s ease;
 
-    // hover / 展开的表面层：中性白，微弱即可
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      border-radius: inherit;
-      background: rgba(255, 255, 255, 0.055);
-      opacity: 0;
-      transition: opacity 0.22s ease;
-      pointer-events: none;
-    }
-
-    // 展开态的 accent 左轨
-    &::before {
-      content: "";
-      position: absolute;
-      top: 10px;
-      bottom: 10px;
-      left: 0;
-      width: 2px;
-      border-radius: 2px;
-      background: var(--accent);
-      opacity: 0;
-      transition: opacity 0.22s ease;
-    }
-
-    &:hover {
-      border-color: rgba(255, 255, 255, 0.07);
-      background-color: rgba(255, 255, 255, 0.04);
-
-      &::after {
-        opacity: 1;
-      }
-
-      &::before {
-        opacity: 0.45;
-      }
-
-      .box-services-dot {
-        border-color: var(--accent);
-        transform: scale(1.2);
-
-        &::after {
-          opacity: 1;
-        }
-      }
-
-      .box-services-chevron {
-        opacity: 0.9;
-      }
-    }
-
-    &:active {
-      transform: scale(0.995);
-    }
-
-    &:focus-visible {
-      outline: 1px solid rgba(103, 232, 249, 0.7);
-      outline-offset: 2px;
-    }
-
-    &.is-expanded {
-      border-color: rgba(255, 255, 255, 0.09);
-      background-color: rgba(255, 255, 255, 0.05);
-
-      &::after {
-        opacity: 1;
-      }
-
-      &::before {
-        opacity: 1;
-      }
-
-      .box-services-dot {
-        border-color: var(--accent);
-        transform: scale(1.1);
-
-        &::after {
-          opacity: 1;
-        }
-      }
-
-      .box-services-chevron {
-        transform: rotate(225deg);
-        opacity: 0.9;
-      }
-
-      .box-services-detail-wrap {
-        max-height: 280px;
-        opacity: 1;
-        -webkit-mask-image: none;
-        mask-image: none;
-      }
-
-      .box-services-detail {
-        -webkit-line-clamp: unset;
-      }
+    &.has-wide-logo {
+      --badge-width: 96px;
     }
   }
 
-  // 时间轴节点：静态小圆点，hover / 展开点亮
+  // 时间轴节点：accent 内芯 + 白色描边，静态呈现
   &-dot {
     position: relative;
     z-index: 1;
     grid-column: 1;
     width: var(--dot-size);
     height: var(--dot-size);
-    margin-top: 6px;
+    margin-top: 7px;
     border: 1.5px solid rgba(255, 255, 255, 0.35);
     border-radius: 50%;
     background: rgba(7, 12, 20, 0.9);
     box-shadow: 0 0 0 3px rgba(7, 12, 20, 0.9);
-    transition:
-      border-color 0.22s ease,
-      transform 0.22s ease;
 
     &::after {
       content: "";
@@ -570,22 +422,46 @@ const toggleExperience = (index: number) => {
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 8px rgba(103, 232, 249, 0.8);
-      opacity: 0;
-      transition: opacity 0.22s ease;
     }
   }
 
+  // 第二列内部再分三栏：徽章 / 公司名 / 时间；职位跨后两栏，与公司名左对齐
   &-experience-main {
     grid-column: 2;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-xs);
+    display: grid;
+    grid-template-columns: var(--badge-width) minmax(0, 1fr) auto;
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: center;
     min-width: 0;
   }
 
+  &-logo {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--badge-width);
+    height: 36px;
+    padding: 4px 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.07);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+  }
+
   &-company {
-    flex: 1;
+    grid-column: 2;
+    grid-row: 1;
     overflow: hidden;
     min-width: 0;
     color: var(--color-white-400);
@@ -601,7 +477,8 @@ const toggleExperience = (index: number) => {
   }
 
   &-period {
-    flex-shrink: 0;
+    grid-column: 3;
+    grid-row: 1;
     color: rgba(255, 255, 255, 0.4);
     font-size: 10.5px;
     letter-spacing: 0.06em;
@@ -611,76 +488,11 @@ const toggleExperience = (index: number) => {
   }
 
   &-role {
-    grid-column: 2;
-    color: rgba(255, 255, 255, 0.62);
+    grid-column: 2 / span 2;
+    grid-row: 2;
+    color: rgba(255, 255, 255, 0.68);
     font-size: var(--font-size-xxs);
     line-height: 1.35;
-  }
-
-  // 关键指标：accent 单色文字，前面加短线引导，不再用底色 chip
-  &-signal {
-    grid-column: 2;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 2px;
-    color: var(--accent);
-  }
-
-  &-signal-text {
-    flex: 0 1 auto;
-    max-width: 100%;
-    color: rgba(103, 232, 249, 0.92);
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-  }
-
-  &-signal::before {
-    content: "";
-    flex-shrink: 0;
-    width: 10px;
-    height: 1px;
-    background: rgba(103, 232, 249, 0.55);
-  }
-
-  &-chevron {
-    flex-shrink: 0;
-    width: 6px;
-    height: 6px;
-    margin-left: auto;
-    margin-top: -2px;
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    opacity: 0.45;
-    transform: rotate(45deg);
-    transition:
-      transform 0.3s ease,
-      opacity 0.2s ease;
-  }
-
-  &-detail-wrap {
-    grid-column: 2;
-    overflow: hidden;
-    max-height: 3em; // 收起时显示两行（12px × 1.55 ≈ 37px，此处按 12px 计）
-    font-size: 12px;
-    opacity: 0.9;
-    -webkit-mask-image: linear-gradient(to bottom, #000 55%, rgba(0, 0, 0, 0.15) 100%);
-    mask-image: linear-gradient(to bottom, #000 55%, rgba(0, 0, 0, 0.15) 100%);
-    transition:
-      max-height 0.34s ease,
-      opacity 0.3s ease;
-  }
-
-  &-detail {
-    display: -webkit-box;
-    overflow: hidden;
-    color: rgba(255, 255, 255, 0.52);
-    font-size: 12px;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-height: 1.55;
   }
 
   &-footer {
@@ -691,13 +503,6 @@ const toggleExperience = (index: number) => {
   @media (prefers-reduced-motion: reduce) {
     .box-services-status::before {
       animation: none;
-    }
-
-    .box-services-experience,
-    .box-services-dot,
-    .box-services-detail-wrap,
-    .box-services-chevron {
-      transition: none;
     }
   }
 }

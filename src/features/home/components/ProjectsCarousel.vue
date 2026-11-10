@@ -446,7 +446,6 @@ class GalleryApp {
   lastFrameTime = performance.now();
   onCheckDebounce: () => void;
   boundOnResize = this.onResize.bind(this);
-  boundOnWheel = this.onWheel.bind(this);
   boundOnPointerDown = this.onPointerDown.bind(this);
   boundOnPointerMove = this.onPointerMove.bind(this);
   boundOnPointerUp = this.onPointerUp.bind(this);
@@ -562,13 +561,6 @@ class GalleryApp {
     this.onCheck();
   }
 
-  onWheel(event: WheelEvent) {
-    event.preventDefault();
-    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-    this.scroll.target += (delta > 0 ? this.config.scrollSpeed : -this.config.scrollSpeed) * 0.2;
-    this.onCheckDebounce();
-  }
-
   onCheck() {
     if (!this.medias[0]) return;
     const width = this.medias[0].width;
@@ -649,7 +641,6 @@ class GalleryApp {
 
   addEventListeners() {
     window.addEventListener("resize", this.boundOnResize);
-    this.container.addEventListener("wheel", this.boundOnWheel, { passive: false });
     this.container.addEventListener("pointerdown", this.boundOnPointerDown);
     this.container.addEventListener("pointermove", this.boundOnPointerMove);
     this.container.addEventListener("pointerup", this.boundOnPointerUp);
@@ -661,7 +652,6 @@ class GalleryApp {
   destroy() {
     window.cancelAnimationFrame(this.raf);
     window.removeEventListener("resize", this.boundOnResize);
-    this.container.removeEventListener("wheel", this.boundOnWheel);
     this.container.removeEventListener("pointerdown", this.boundOnPointerDown);
     this.container.removeEventListener("pointermove", this.boundOnPointerMove);
     this.container.removeEventListener("pointerup", this.boundOnPointerUp);

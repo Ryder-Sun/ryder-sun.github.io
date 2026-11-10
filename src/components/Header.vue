@@ -198,6 +198,10 @@ const getInTouchClassNames = computed(() => {
   &-dark {
     color: var(--color-white-400);
     --icon-color: var(--color-white-400);
+
+    :deep(.header-logo-image) {
+      filter: brightness(0) invert(1);
+    }
   }
 
   &-get-in-touch {
@@ -231,10 +235,12 @@ const getInTouchClassNames = computed(() => {
     }
 
     &-image {
-      width: 36px;
+      width: 116px;
+      height: auto;
+      flex-shrink: 0;
 
       @include mixins.mq("md") {
-        width: 40px;
+        width: 128px;
       }
     }
 
