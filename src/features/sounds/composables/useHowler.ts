@@ -17,6 +17,10 @@ export const soundsEnabled = ref(true);
 
 Howler.volume(0);
 
+// User gestures that browsers accept as "activation" to resume a suspended AudioContext.
+// Covers mouse (pointerdown/click), keyboard (keydown) and touch (pointerdown/touchend).
+const UNLOCK_EVENTS = ["pointerdown", "click", "keydown", "touchend"] as const;
+
 export const useHowler = () => {
   const { isTouch } = useAgent();
   const enabledVolume = ref<number>(0);
@@ -33,10 +37,58 @@ export const useHowler = () => {
     soundsEnabled.value = true;
   };
 
+  /**
+   * Explicitly resumes the suspended AudioContext on the first real user gesture.
+   * The gsap ticker polling below stays as a fallback, but the gesture listener
+   * guarantees the unlock no matter which element consumes the event.
+   */
+  const handleUnlockGesture = () => {
+    if (howlerUnlocked.value) {
+      removeUnlockListeners();
+      return;
+    }
+
+    const ctx = Howler.ctx;
+    if (!ctx) return;
+
+    if (ctx.state === "running") {
+      handleUnlocked();
+      removeUnlockListeners();
+      return;
+    }
+
+    void ctx
+      .resume()
+      .then(() => {
+        if (ctx.state === "running") {
+          handleUnlocked();
+          removeUnlockListeners();
+        }
+      })
+      .catch(() => {
+        // Resume rejected (e.g. gesture not counted as activation yet);
+        // keep listening for the next gesture — ticker polling remains as fallback.
+      });
+  };
+
+  const addUnlockListeners = () => {
+    for (const eventName of UNLOCK_EVENTS) {
+      window.addEventListener(eventName, handleUnlockGesture, { capture: true });
+    }
+  };
+
+  const removeUnlockListeners = () => {
+    for (const eventName of UNLOCK_EVENTS) {
+      window.removeEventListener(eventName, handleUnlockGesture, { capture: true });
+    }
+  };
+
   const tick = () => {
     if (!howlerUnlocked.value) {
       if (Howler.ctx.state !== "running") return;
+      // Fallback: context already running (e.g. unlocked by Howler itself)
       handleUnlocked();
+      removeUnlockListeners();
     } else if (!isTouch.value) {
       // Only process sounds on non-touch devices
       contactTick();
@@ -84,6 +136,7 @@ export const useHowler = () => {
     Howler.volume(0);
 
     gsap.ticker.add(tick);
+    addUnlockListeners();
     window.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("keydown", handleKeyPress);
 
@@ -95,6 +148,7 @@ export const useHowler = () => {
   onUnmounted(() => {
     if (!isFeatureEnabled("sounds")) return;
     gsap.ticker.remove(tick);
+    removeUnlockListeners();
     window.removeEventListener("visibilitychange", handleVisibilityChange);
     window.removeEventListener("keydown", handleKeyPress);
     stopSnoreRepetition();
