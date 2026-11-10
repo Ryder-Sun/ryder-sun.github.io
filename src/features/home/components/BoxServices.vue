@@ -152,7 +152,7 @@ const LOGO_ALT: Record<ExperienceLogoKey, string> = {
   jidu: "JIDU logo",
 };
 
-/** Horizontal wordmarks need a wider badge than square icons to stay legible. */
+/** Horizontal wordmarks need a wider logo slot than square icons to stay legible. */
 const WIDE_LOGO_KEYS: ReadonlySet<string> = new Set(["zgci", "jidu"]);
 
 const EXPERIENCE_EN = [
@@ -384,7 +384,7 @@ const experiences = computed(() => {
     }
   }
 
-  // 每条经历：时间轴圆点 + logo 徽章 + 公司/时间 + 职位
+  // 每条经历：时间轴圆点 + logo + 公司/时间 + 职位
   &-experience {
     --badge-width: 64px;
 
@@ -425,7 +425,7 @@ const experiences = computed(() => {
     }
   }
 
-  // 第二列内部再分三栏：徽章 / 公司名 / 时间；职位跨后两栏，与公司名左对齐
+  // 第二列内部再分三栏：logo / 公司名 / 时间；职位跨后两栏，与公司名左对齐
   &-experience-main {
     grid-column: 2;
     display: grid;
@@ -436,6 +436,7 @@ const experiences = computed(() => {
     min-width: 0;
   }
 
+  // 透明布局占位：仅负责 logo 与公司名左对齐，无背景 / 边框 / 圆角
   &-logo {
     grid-column: 1;
     grid-row: 1 / span 2;
@@ -444,18 +445,12 @@ const experiences = computed(() => {
     justify-content: center;
     width: var(--badge-width);
     height: 36px;
-    padding: 4px 6px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.07);
 
     img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: 0.9;
     }
   }
 
