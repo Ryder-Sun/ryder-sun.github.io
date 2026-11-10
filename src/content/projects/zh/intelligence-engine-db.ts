@@ -15,7 +15,7 @@ export default {
     "crawler"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Intelligence-Engine-Data-Base",
+  "source": "https://github.com/Ryder-Sun/Intelligence-Engine-Data-Base",
   "description": "Intelligence Engine Data Base 是多维情报系统背后的后端数据基础设施，负责把政策页面、论文信息、社媒信号、外部数据和学者知识采集到统一存储与 API 层。它支撑 DeanAgent、ScholarSentry 和项目资料库这类上层产品。<br/><br/>GitHub API 于 2026-05-27 核验：0 Stars、Python，仓库于 2026-05-26 更新。项目重点在 FastAPI、APScheduler、Playwright、PostgreSQL/Supabase 与信源治理。",
   "components": [
     {

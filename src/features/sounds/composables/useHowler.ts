@@ -35,6 +35,11 @@ export const useHowler = () => {
     }
 
     soundsEnabled.value = true;
+
+    // Immediately set volume to trigger music playback
+    if (soundsEnabled.value) {
+      Howler.volume(1);
+    }
   };
 
   /**

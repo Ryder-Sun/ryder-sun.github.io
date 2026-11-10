@@ -8,7 +8,7 @@ export default {
   title: "TDA-YOLO",
   theme: "light",
   tags: ["research", "pytorch", "python", "ai"],
-  source: "https://github.com/Ryder-MHumble/TDA-YOLO",
+  source: "https://github.com/Ryder-Sun/TDA-YOLO",
   description:
     "TDA-YOLO is an adaptive object-detection framework for UAV remote-sensing imagery. It addresses small, dense, and scale-varying targets with lightweight adaptive weighted downsampling, dynamic upsampling, and a deformable dynamic detection head.<br/><br/>GitHub API check on 2026-08-12: 7 stars. The repository publishes experiment evidence for VisDrone and DOTAv2 and connects model architecture choices with accuracy, computation, and deployability.",
   components: [

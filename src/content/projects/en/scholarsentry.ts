@@ -14,7 +14,7 @@ export default {
     "ai"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Scholars-System",
+  "source": "https://github.com/Ryder-Sun/Scholars-System",
   "description": "Scholars System is an academic-intelligence interface for scholar profiles, paper outputs, institution relationships, and research movement. It turns paper repositories and scholar graphs into a searchable, monitorable, alert-oriented product surface.<br/><br/>GitHub API check on 2026-08-12: 9 stars, TypeScript. The case focuses on converting fragmented academic records into a reusable research-monitoring workflow.",
   "components": [
     {

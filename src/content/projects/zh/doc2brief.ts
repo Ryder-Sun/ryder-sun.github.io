@@ -10,7 +10,7 @@ export default {
   theme: "light",
   tags: ["react", "javascript", "node", "agent", "product"],
   videoBorder: false,
-  source: "https://github.com/Ryder-MHumble/Doc2Brief",
+  source: "https://github.com/Ryder-Sun/Doc2Brief",
   description:
     "Doc2Brief 是一个把文件或文本转换成可访问、可编辑、可复用周报链接的生成平台。它不是简单让模型直接吐 HTML，而是把抽取、结构化、模板匹配、模板渲染、发布链接和同链接更新拆成稳定链路。<br/><br/>GitHub API 于 2026-05-27 核验：0 Stars、JavaScript。项目重点在 React/Vite 前端、Node 服务、Agent CLI、内置模板库、文件解析与可复用报告发布工作流。",
   components: [

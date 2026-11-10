@@ -16,7 +16,7 @@ export default {
     "pytorch"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/EvoLabeler-AIAgent-MLOps",
+  "source": "https://github.com/Ryder-Sun/EvoLabeler-AIAgent-MLOps",
   "description": "EvoLabeler 是面向遥感目标检测的 AI Agent 驱动 MLOps 系统，覆盖数据上传、智能标注、主动学习、半监督学习、课程学习、模型训练、评估与迭代反馈。它不是单一标注工具，而是把数据生产和模型进化放进同一个闭环。<br/><br/>GitHub API 于 2026-08-12 核验：15 Stars、Python。项目重点在于让每次样本选择、标注动作、训练结果和质量评估都能成为下一轮模型改进的依据。",
   "components": [
     {

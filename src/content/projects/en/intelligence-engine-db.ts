@@ -15,7 +15,7 @@ export default {
     "crawler"
   ],
   "videoBorder": false,
-  "source": "https://github.com/Ryder-MHumble/Intelligence-Engine-Data-Base",
+  "source": "https://github.com/Ryder-Sun/Intelligence-Engine-Data-Base",
   "description": "Intelligence Engine Data Base is the backend data infrastructure behind multi-dimensional intelligence products. It collects policy pages, paper information, social signals, external data, and scholar knowledge into a shared storage and API layer for DeanAgent, ScholarSentry, and project-library analysis.<br/><br/>GitHub API check on 2026-05-27: 0 stars, Python, updated on 2026-05-26. The project focus is FastAPI, APScheduler, Playwright, PostgreSQL/Supabase, and source governance.",
   "components": [
     {
