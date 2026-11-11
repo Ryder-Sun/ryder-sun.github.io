@@ -6,6 +6,7 @@
   "contact": "Contact",
   "description": "Description",
   "disable-sounds": "Disable sounds",
+  "enable-sound-hint": "Click anywhere for sound",
   "enable-sounds": "Enable sounds",
   "full-name": "Ryder<br /><span class=\"hero-title-accent\">Sun</span>",
   "short-name": "Ryder",

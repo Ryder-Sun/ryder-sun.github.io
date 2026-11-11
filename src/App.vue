@@ -15,6 +15,8 @@ import { projectVisible } from "./composables/useRouteObserver";
 import ProjectBackground from "./features/projects/components/ProjectBackground.vue";
 import { useClickSound } from "./features/sounds/composables/useClickSounds";
 //import { useHoverSound } from "./features/sounds/composables/useHoverSounds";
+import { howlerUnlocked } from "./features/sounds/composables/useHowler";
+import { t } from "./i18n/utils/translate";
 
 const { isTransitioning } = useProjectTransition();
 
@@ -51,6 +53,13 @@ const { isTouch } = useAgent();
     </div>
   </div>
 
+  <!-- Browsers block audible autoplay on a cold visit. Tell the visitor what the
+       first interaction does instead of failing silently. Hidden once the audio
+       context is running (repeat visits / autoplay permission granted). -->
+  <div v-if="!isTouch && !howlerUnlocked" class="audio-hint">
+    {{ t("enable-sound-hint") }}
+  </div>
+
   <Cursor v-if="!isTouch" />
 </template>
 
@@ -80,5 +89,23 @@ const { isTouch } = useAgent();
   width: 100%;
   height: 100%;
   overflow: hidden; /* ensure no scroll container */
+}
+
+.audio-hint {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-outer, 24px);
+  transform: translateX(-50%);
+  z-index: var(--z-index-header, 90);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(5, 46, 135, 0.72);
+  color: var(--color-white-400, #fff);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.9;
 }
 </style>

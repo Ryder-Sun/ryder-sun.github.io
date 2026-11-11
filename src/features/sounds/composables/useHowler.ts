@@ -26,6 +26,7 @@ export const useHowler = () => {
   const enabledVolume = ref<number>(0);
 
   const handleUnlocked = () => {
+    if (howlerUnlocked.value) return;
     howlerUnlocked.value = true;
 
     // Disable sounds completely on touch devices
@@ -36,10 +37,9 @@ export const useHowler = () => {
 
     soundsEnabled.value = true;
 
-    // Immediately set volume to trigger music playback
-    if (soundsEnabled.value) {
-      Howler.volume(1);
-    }
+    // Unmute the master volume as soon as the context is usable. Music tracks are
+    // started independently by useMusic, so they can already be queued or playing.
+    Howler.volume(1);
   };
 
   /**
@@ -90,7 +90,7 @@ export const useHowler = () => {
 
   const tick = () => {
     if (!howlerUnlocked.value) {
-      if (Howler.ctx.state !== "running") return;
+      if (Howler.ctx?.state !== "running") return;
       // Fallback: context already running (e.g. unlocked by Howler itself)
       handleUnlocked();
       removeUnlockListeners();
@@ -144,6 +144,15 @@ export const useHowler = () => {
     addUnlockListeners();
     window.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("keydown", handleKeyPress);
+
+    // Chrome grants audible autoplay to origins the user has already interacted
+    // with (or that passed the Media Engagement Index threshold). In that case the
+    // AudioContext is running on load, so no gesture is needed — unlock right away
+    // instead of waiting for the first click.
+    if (Howler.ctx?.state === "running") {
+      handleUnlocked();
+      removeUnlockListeners();
+    }
 
     if (!isTouch.value) {
       loadAllSounds();

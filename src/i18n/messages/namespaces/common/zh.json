@@ -6,6 +6,7 @@
   "contact": "联系",
   "description": "项目描述",
   "disable-sounds": "关闭声音",
+  "enable-sound-hint": "点击任意处开启音乐",
   "enable-sounds": "开启声音",
   "full-name": "Ryder<br /><span class=\"hero-title-accent\">Sun</span>",
   "short-name": "Ryder",
