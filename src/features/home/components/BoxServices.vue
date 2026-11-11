@@ -8,10 +8,10 @@ import { BREAKPOINTS } from "../../../utils/sizes";
 import { Vector3 } from "three";
 import ProjectedElement from "../../../components/ProjectedElement.vue";
 import zgciLogo from "../../../assets/logos/zgci.png";
-import meituanLogo from "../../../assets/logos/meituan-white.svg";
-import baiduLogo from "../../../assets/logos/baidu-white.svg";
-import zhipuLogo from "../../../assets/logos/zhipu-lobe.svg";
-import jiduLogo from "../../../assets/logos/jidu.png";
+import meituanLogo from "../../../assets/logos/meituan-color.svg";
+import baiduLogo from "../../../assets/logos/baidu-color.svg";
+import zhipuLogo from "../../../assets/logos/zhipu-color.svg";
+import jiduLogo from "../../../assets/logos/jidu-mark.png";
 
 const point = new Vector3(0.75, 2.75, 6.75);
 
@@ -153,7 +153,13 @@ const LOGO_ALT: Record<ExperienceLogoKey, string> = {
 };
 
 /** Horizontal wordmarks need a wider logo slot than square icons to stay legible. */
-const WIDE_LOGO_KEYS: ReadonlySet<string> = new Set(["zgci", "jidu"]);
+const WIDE_LOGO_KEYS: ReadonlySet<string> = new Set(["zgci"]);
+
+/** Official dark-blue marks need a slight lift to stay legible on the dark card. */
+const DARK_BRAND_LOGO_KEYS: ReadonlySet<string> = new Set(["baidu", "zhipu"]);
+
+/** Solid white marks read heavier than line-art icons, so cap their rendered size. */
+const COMPACT_LOGO_KEYS: ReadonlySet<string> = new Set(["jidu"]);
 
 const EXPERIENCE_EN = [
   { period: "2025.8 - Now", company: "ZGCI Intelligent Innovation Center", role: "Product Manager (Full-time)", logo: "zgci" },
@@ -206,7 +212,13 @@ const experiences = computed(() => {
           >
             <span class="box-services-dot" aria-hidden="true"></span>
             <div class="box-services-experience-main">
-              <span class="box-services-logo">
+              <span
+                class="box-services-logo"
+                :class="{
+                  'is-dark-brand': DARK_BRAND_LOGO_KEYS.has(experience.logo),
+                  'is-compact': COMPACT_LOGO_KEYS.has(experience.logo),
+                }"
+              >
                 <img :src="LOGO_SOURCES[experience.logo]" :alt="LOGO_ALT[experience.logo]" />
               </span>
               <p class="box-services-company">{{ experience.company }}</p>
@@ -451,6 +463,17 @@ const experiences = computed(() => {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    // 官方深蓝 logo 在深色卡片上对比度不足：仅轻微提亮，不改色 / 不反白 / 不加底
+    &.is-dark-brand img {
+      filter: brightness(1.7);
+    }
+
+    // 实心白色图形标视觉偏重，收到与线性图标相当的尺寸
+    &.is-compact img {
+      width: 28px;
+      height: 28px;
     }
   }
 
